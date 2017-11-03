@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.*;
 
 public class Jeu {
@@ -10,22 +8,185 @@ public class Jeu {
 	ArrayList piocheJeu = new ArrayList(); 
 	ArrayList pileJeu[] = new ArrayList[4]; //tab de 4 arraylist d'entiers : 1 par symbole
 	ArrayList colonneJeu[] = new ArrayList[7]; // tab de 7 arrayList d'entiers.
-	
+	int instanceJeu;
 	
 	// constructeur
 	public Jeu() {
-		initialisation();
+		jouer();
+		//initialisation();
 	}
 	
-	public void initialisation() {
-		initJeuGlobal(); // creer tes 52 cartes
-		//melangeCartes(); // pour melanger cartes
-		initPioche();  // prend les 24 derniers cartes
-		initColonne(); 
- 
-		// init de pile est implicite 
+	public void jouer() {
+		instanceJeu++; // maj de l instance du jeu 
+		sommaire(instanceJeu); // introduction du jeu ...
+		
+		initialisation();  // initialise pioche, piles et colonnes 
+		System.out.println("\n");
+		
+		displayEtatCarteJeu();
+		System.out.println("\n");
+		
+		System.out.println("Choix possibles :");
+		System.out.println("1 : Prendre une carte de la pioche");
+		System.out.println("2 : Prendre une carte des piles");
+		System.out.println("3 : Prendre une (ou des) carte(s) des colonnes");
+		
+		int choix =0;
+		
+		do {
+			System.out.print("Votre choix : ");
+
+			 Scanner clavier =  new Scanner(System.in);
+			
+			try {
+				choix = clavier.nextInt();
+			}
+			catch(Exception e) {
+				System.out.println("impossible");
+				choix = -1;
+								
+			}
+			
+		} while(choix > 10 || choix < 1);
+		
+		//switch(choix) {
+			//case.getClass()..
+			
+		
+		switch(choix)
+		{
+		case 1 : 
+			methode1();
+			break;
+		case 2 : 
+			methode2();
+			break;
+		case 3 :
+			methode3();
+			break;
+		case 4 :
+			methode4();
+			break;
+		//default :
+		//	methodeDefaut();
+		}
+		
+		
+		
+		//}
+		
+//		System.out.println("Choix possibles :");
+//		System.out.println("1 : Prendre une carte de la pioche");
+//		System.out.println("2 : Prendre une carte des piles");
+//		System.out.println("3 : Prendre une (ou des) carte(s) des colonnes");
+//		System.out.println("4 : Afficher l'état du jeu");
+//		System.out.println("5 : Undo");
+//		System.out.println("6 : Redo");
+//		System.out.println("7 : Activer le mode triche");
+//		System.out.println("8 : Recommencer la partie");
+//		System.out.println("9 : Sauver la partie");
+//		System.out.println("10 : Quitter\n\n");
+//		
+//		System.out.print("Veuillez faire votre choix : ");
+//		
+//		Scanner clavier = new Scanner(System.in) ;
+//		int choix = 0;
+//		try {
+//			choix = clavier.nextInt();
+//		}
+//				
+//		catch(Exception e) {
+//			// cas a part 
+//		}
+//				
+//		while(choix > 10 || choix < 1) {
+//			System.out.println("Choix incorrect");
+//		 	System.out.println();
+//		 	// cas a part
+//		}
+//		
+//		System.out.println("choix bon on traite ...");
+		//System.out.println("totototototo");
+	
 		
 	}
+	// methode qquitter
+	public void methode4() {
+		return;
+	}
+	
+	public void methode3() {		
+		System.out.println("bienvenue dans la methode 3");
+	}
+	
+	public void methode2() {
+		System.out.println("methode2");
+	}
+	
+	public void methode1() {
+		System.out.println("methode1");
+	}
+	// initialise pile, colonne, pioche 
+	public void initialisation() {
+		initJeuGlobal(); // creer tes 52 cartes
+		melangeCartes(); // pour melanger cartes
+		initPioche();  // prend les 24 derniers cartes
+		initColonne(); // initialise tes colonnes 
+ 		// init de pile est implicite 	
+		initPile();
+	}
+			
+	// affiche pile colonne et pioche
+	public void displayEtatEntierJeu() {
+		displayPioche();
+		displayColonnes();
+		displayPiles();
+	}
+	
+	public void displayEtatCarteJeu() {
+		displayCartePioche();
+		displayCarteColonnes();
+		displayCartePiles();
+	}
+	
+	public void displayCartePioche() {
+		System.out.println(displayListCarte("Pioche : ", this.piocheJeu));
+	}
+	public void displayCarteColonnes() {
+		for(int j=0; j<colonneJeu.length; j++) 
+			System.out.println(displayListCarte("Colonne "+j+" : ", this.colonneJeu[j]));
+	}
+	public void displayCartePiles() {
+		for(int j=0; j<pileJeu.length; j++) 
+			System.out.println(displayListCarte("Pile "+j+" : ", this.pileJeu[j]));
+	}
+	public void displayPioche() {		
+		System.out.println(displayListEntier("Pioche : ", this.piocheJeu));
+	}
+	
+	public void displayColonnes() {
+		for(int j=0; j<colonneJeu.length; j++) 
+			System.out.println(displayListEntier("Colonne "+j+" : ", this.colonneJeu[j]));		
+	}
+	
+	public void displayPiles() {
+		for(int j=0; j<pileJeu.length; j++) 
+			System.out.println(displayListEntier("Pile "+j+" : ", this.pileJeu[j]));		
+		
+	}
+	
+	
+	
+	
+	public void sommaire(int indice) {
+		String res = "";
+		res += "\n PROJET SOLITAIRE";
+		res += "\n Auteur : Bernard Hounkonnou";
+		res += "\n Date : 31 Octobre 2017";
+		res += "\n \n Solitaire instance N° " + indice; 
+		System.out.println(res);	
+	}
+	
 	
 	public void initJeuGlobal() {
 		listCartes = new ArrayList();
@@ -39,6 +200,13 @@ public class Jeu {
 		for (int ap=29; ap<=52; ap++) {
 			piocheJeu.add(this.listCartes.get(ap-1));
 		}
+	}
+	
+	public void initPile() {
+		for(int j=0; j<pileJeu.length; j++) {
+			pileJeu[j] = new ArrayList();
+		}
+		
 	}
 	
 	public void initColonne() {
@@ -160,6 +328,38 @@ public class Jeu {
 		return new Carte(valeur, symbole);
 		
 	}
+	//NEWNEWNEW : retourne nom + valeur entiere de ta liste
+	public String displayListEntier(String nom, ArrayList lalist) {
+		String res = nom;
+		if(lalist.isEmpty())
+			return res+" Rien";
+		
+		for (int i=0; i<lalist.size(); i++) {
+			res += " " + (lalist.get(i).toString());
+		}
+		return res;
+	}
+	
+	// renvoie le nom + le display des cartes associees aux entiers  de la liste
+	public String displayListCarte(String nom, ArrayList lalist) {
+		String res = nom;
+		
+		if(lalist.isEmpty())
+			return res+" Rien";
+		
+		for (int i=0; i<lalist.size(); i++) {
+			int indTemp = (int) lalist.get(i);			
+			res += " " + getCarteVS(indTemp);
+		}
+		return res;		
+	}
+	
+	
+	//LES ACTIONS DANS UNE PARTIE 
+	
+	public void actionn() {
+		System.out.println();
+	}
 	
 	public static void main(String[] args) {
 		Jeu j = new Jeu();
@@ -167,8 +367,10 @@ public class Jeu {
 		/*int a=1 ;
 		if (a == 1) 
 			return; EXIIIIITT*/
+		/*
+		//***COL
 		ArrayList ltemp ;
-		
+		System.out.println("Colonne : ");
 		for(int k=0; k<7; k++) {
 			ltemp= j.getlistColonnes(k);
 			
@@ -176,9 +378,20 @@ public class Jeu {
 				System.out.print(ltemp.get(z) + " ");
 			}
 			System.out.println();
-			
 		}
-		
+		System.out.println();
+		//***PILE
+		ArrayList pile ; 
+		System.out.println("Pile : ");
+		for(int op=1; op<=4; op++) {
+			System.out.print("Rien  ");
+		}
+		System.out.println();
+		System.out.println();
+		//***PIOCHE
+		System.out.println("Pioche : ");
+		System.out.println(j.listCartes);
+		*/
 		
 		// TEST LE getcarte et shuffle
 		/*int ip;
