@@ -142,12 +142,19 @@ public class Jeu {
 	}
 	
 	public void methode1() {
-		// déplacer une carte des pioches vers le 1er emplacement des piles @àaméliorer
+		// déplacer une carte des pioches, vers les piles
+		System.out.println("bon choix :) vers quelle pile la déplacer ? 0, 1, 2 ou 3");
+		Scanner clavier =  new Scanner(System.in);
+		int y = clavier.nextInt();
+		if (y>-1 && y <4) {
 		int ii = piocheJeu.size()-1;
 		int valTemp = (int) piocheJeu.get(ii);
-		pileJeu[0].add(valTemp);
+		pileJeu[y].add(valTemp);
 		piocheJeu.remove(ii);
 		displayEtatCarteJeu();
+		}
+		else
+			methode1();
 	}
 	
 	
