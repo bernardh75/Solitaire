@@ -27,9 +27,17 @@ public class Jeu {
 		System.out.println("\n");
 		
 		System.out.println("Choix possibles :");
+		
 		System.out.println("1 : Prendre une carte de la pioche");
 		System.out.println("2 : Prendre une carte des piles");
 		System.out.println("3 : Prendre une (ou des) carte(s) des colonnes");
+		System.out.println("4 : Afficher l'état du jeu");
+		System.out.println("5 : Undo");
+		System.out.println("6 : Redo");
+		System.out.println("7 : Activer le mode triche");
+		System.out.println("8 : Recommencer la partie");
+		System.out.println("9 : Sauver la partie");
+		System.out.println("10 : Quitter la partie \n\n");
 		
 		int choix =0;
 		
@@ -42,38 +50,48 @@ public class Jeu {
 				choix = clavier.nextInt();
 			}
 			catch(Exception e) {
-				System.out.println("impossible");
+				System.out.println("Votre droit être entre 1 et 10, Recommencez ! ");
 				choix = -1;
 								
 			}
 			
 		} while(choix > 10 || choix < 1);
 		
-		//switch(choix) {
-			//case.getClass()..
-			
-		
 		switch(choix)
 		{
 		case 1 : 
 			methode1();
 			break;
-		case 2 : 
-			methode2();
+//		case 2 : 
+//			methode2();
+//			break;
+//		case 3 :
+//			methode3();
+//			break;
+//		case 4 :
+//			methode4();
+//			break;
+//		case 5 : 
+//			methode5();
+//			break;
+//		case 6 : 
+//			methode6();
+//			break;
+//		case 7 : 
+//			methode7();
+//			break;
+//		case 8 :
+//			methode8();
+//			break;
+//		case 9 :
+//			methode9();
+//			break;
+		case 10 : 
+			methode10();
 			break;
-		case 3 :
-			methode3();
-			break;
-		case 4 :
-			methode4();
-			break;
-		//default :
-		//	methodeDefaut();
+//		default :
+//			methodeDefault();
 		}
-		
-		
-		
-		//}
 		
 //		System.out.println("Choix possibles :");
 //		System.out.println("1 : Prendre une carte de la pioche");
@@ -110,8 +128,8 @@ public class Jeu {
 	
 		
 	}
-	// methode qquitter
-	public void methode4() {
+	// methode quitter
+	public void methode10() {
 		return;
 	}
 	
@@ -124,8 +142,15 @@ public class Jeu {
 	}
 	
 	public void methode1() {
-		System.out.println("methode1");
+		// déplacer une carte des pioches vers le 1er emplacement des piles @àaméliorer
+		int ii = piocheJeu.size()-1;
+		int valTemp = (int) piocheJeu.get(ii);
+		pileJeu[0].add(valTemp);
+		piocheJeu.remove(ii);
+		displayEtatCarteJeu();
 	}
+	
+	
 	// initialise pile, colonne, pioche 
 	public void initialisation() {
 		initJeuGlobal(); // creer tes 52 cartes
