@@ -178,7 +178,6 @@ public class Jeu {
 	public void sommaire(int indice) {
 		String res = "";
 		res += "\n PROJET SOLITAIRE";
-		res += "\n Auteur : Bernard Hounkonnou";
 		res += "\n Date : 31 Octobre 2017";
 		res += "\n \n Solitaire instance N° " + indice; 
 		System.out.println(res);	
