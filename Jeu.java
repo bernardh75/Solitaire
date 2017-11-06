@@ -3,13 +3,14 @@ import java.util.*;
 public class Jeu {
 	
 	//ATTRIBUTS
+	ArrayList listCartes = new ArrayList();
 	ArrayList piocheJeu = new ArrayList(); 
 	ArrayList pileJeu[] = new ArrayList[4]; //tab de 4 arraylist d'entiers : 1 par symbole
 	ArrayList colonneJeu[] = new ArrayList[7]; // tab de 7 arrayList d'entiers.
 	int instanceJeu;
 	
 	// constructeur
-	public Jeu(ArrayList listCartes = new ArrayList();) {
+	public Jeu() {
 		jouer();
 	}
 	
