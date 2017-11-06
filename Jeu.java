@@ -263,8 +263,7 @@ public class Jeu {
 	
 		String res = "";
 		res += "\n PROJET SOLITAIRE";
-		res += "\n Auteur : Bernard Hounkonnou";
-		res += "\n Date : 31 Octobre 2017";
+		res += "\n Date : 06 Novembre 2017";
 		
 		System.out.println(res);	
 	}
