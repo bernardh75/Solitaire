@@ -338,51 +338,24 @@ public class Jeu {
 		
 	public static void main(String[] args) {
 		Jeu j = new Jeu();
-		//j.intro();
-		/*int a=1 ;
-		if (a == 1) 
-			return; EXIIIIITT*/
-		/*
-		//***COL
-		ArrayList ltemp ;
-		System.out.println("Colonne : ");
-		for(int k=0; k<7; k++) {
-			ltemp= j.getlistColonnes(k);
-			
-			for (int z=0; z<ltemp.size(); z++) {
-				System.out.print(ltemp.get(z) + " ");
-			}
-			System.out.println();
-		}
-		System.out.println();
-		//***PILE
-		ArrayList pile ; 
-		System.out.println("Pile : ");
-		for(int op=1; op<=4; op++) {
-			System.out.print("Rien  ");
-		}
-		System.out.println();
-		System.out.println();
-		//***PIOCHE
-		System.out.println("Pioche : ");
-		System.out.println(j.listCartes);
-		*/
-		
-		// TEST LE getcarte et shuffle
-		/*int ip;
-		for (ip=1; ip<=52; ip++) {
-			System.out.println(j.getCarteVS(ip));
-		}*/
-		
-		
-		
-		/*	
-		VERIFIER isrouge
-		Carte c = new Carte("as", "trefle");
-		System.out.println(c.isRouge());
-		
-		Carte d = new Carte("3", "coeur");
-		System.out.println(d.isRouge()); 
-		 */
+		/* si je veux deplacer une liste d element de a vers b 
+ 
+                    ArrayList listeADeplacer = new ArrayList(); // je recupere les elements de a que je veux déplacer ...
+                    for (int i = 7; i < 10; i++)
+                    {
+                           listeADeplacer.Add(a[i]);
+                    }
+ 
+ 
+                    foreach (int aaa in listeADeplacer)     // je parcours les elements de listeAdeplacer : la syntaxe foreach c'est un peu comme la syntaxe for
+                    {
+                           b.Add(aaa); // ici j ajoute petit a petit les elements dans b
+                    }
+ 
+                    // enfin je supprime de ma liste de depart a ...
+                    for (int i = 7; i < 10; i++)
+                    {
+                           a.RemoveAt(i);
+                    } */
 		}
 }
